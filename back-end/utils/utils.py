@@ -26,8 +26,8 @@ def mongodb_cmd_cases(cmd, cmd_id, new_data, session=None):
         case "INSERT":
             assert (new_data.get("_id") is not None)
             new_data_adj = {new_data['_id']: new_data}
-            new_data_adj[new_data['_id']].pop('_id')
-            query_data_indexed.append(new_data_adj)
+            _id = new_data_adj[new_data['_id']].pop('_id')
+            query_data_indexed[_id] = new_data_adj
             return query_data_indexed
         case "FIND":
             return query_data_indexed
@@ -36,7 +36,10 @@ def mongodb_cmd_cases(cmd, cmd_id, new_data, session=None):
             query_data_indexed[cmd_id] = new_data
             return query_data_indexed
         case "DELETE":
-            del query_data_indexed[cmd_id]
+            try:
+                del query_data_indexed[cmd_id]
+            except Exception as e:
+                raise Exception("Such ID is not present in the database!")
             return query_data_indexed
 
         # There is an error

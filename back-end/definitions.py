@@ -1,1 +1,1 @@
-MongoDBStaticData = {"listing_url":"https://www.airbnb.com/rooms/10006546", "name":"Ribeira Charming Duplex"}
+MongoDBStaticData = {"_id": 2142142121, "listing_url":"https://www.airbnb.com/rooms/10006546", "name":"Ribeira Charming Duplex"}
