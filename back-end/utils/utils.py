@@ -1,16 +1,17 @@
 '''
 
-    return pymongo command
+    return data after running mongodb cmd
 
 '''
-from app import db
+from settings import db
 from definitions import MongoDBStaticData
 
 
-def mongodb_cmd_cases(cmd, cmd_id, new_data):
+def mongodb_cmd_cases(cmd, cmd_id, new_data, session=None):
     assert(new_data.get("_id") is not None)
 
-    query = db.myCollection.find()
+    query = db.listingsAndReviews.find()
+
     query_data_indexed = []
     for item in query:
         item.pop('_id')
