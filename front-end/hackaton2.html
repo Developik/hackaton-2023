@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Responsive Navbar</title>
+	<link rel="stylesheet" href="Hackathon.css" /></head>
+
+<body>
+	<main class="content">
+		<h1>Tutorial</h1>
+		<p>No frame there</p>
+	</main>
+	<div class="app">
+
+
+		<div class="menu-toggle">
+			<div class="hamburger">
+				<span></span>
+			</div>
+		</div>
+
+		<aside class="sidebar">
+			<h3>Menu</h3>
+
+			<nav class="menu">
+				<a href="file:///Users/zhanelilyuyeva/Desktop/Hackathon/sidebarh.html" class="menu-item is-active">MongoDb</a>
+				<a href="file:///Users/zhanelilyuyeva/Desktop/Hackathon/sidebarh.html" class="menu-item">MongoDb2</a>
+				<a href="#" class="menu-item">MongoDb3</a>
+				<a href="#" class="menu-item">MongoDb4</a>
+			</nav>
+
+		</aside>
+
+
+	</div>
+
+	<script>
+		const menu_toggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('.sidebar');
+
+		menu_toggle.addEventListener('click', () => {
+			menu_toggle.classList.toggle('is-active');
+			sidebar.classList.toggle('is-active');
+		});
+	</script>
+
+
+</body>
+</html>
