@@ -10,10 +10,6 @@ from definitions import MongoDBStaticData
 def mongodb_cmd_cases(cmd, cmd_id, new_data, session=None):
     query = list(db.listingsAndReviews.find().limit(10))
 
-    #print(query)
-
-    print(cmd)
-
     query_data_indexed = {}
     for item in query:
         item_id = item['_id']

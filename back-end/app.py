@@ -15,7 +15,7 @@ from flask_pymongo import PyMongo
 from definitions import MongoDBStaticData
 from utils.utils import mongodb_cmd_cases
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 #username = os.getenv('MONGODB_USERNAME')
 #password = os.getenv('MONGODB_PASSWORD')
@@ -27,7 +27,7 @@ dict_data = {
 
 @app.route('/')
 def index():
-    return render_template('homepage.html')
+    return render_template('homepage1.html')
 
 
 @app.route('/mongodb_run', methods=['POST'])
