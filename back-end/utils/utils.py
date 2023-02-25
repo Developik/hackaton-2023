@@ -20,22 +20,19 @@ def mongodb_cmd_cases(cmd, cmd_id, new_data, session=None):
         item.pop('_id')
         query_data_indexed[item_id] = item
 
-
-
-    match cmd:
-        case "INSERT":
+    if cmd == "INSERT":
             assert (new_data.get("_id") is not None)
             new_data_adj = {new_data['_id']: new_data}
             _id = new_data_adj[new_data['_id']].pop('_id')
             query_data_indexed[_id] = new_data_adj
             return query_data_indexed
-        case "FIND":
+    elif cmd == "FIND":
             return query_data_indexed
-        case "UPDATE":
+    elif cmd == "UPDATE":
             assert (cmd_id is not None)
             query_data_indexed[cmd_id] = new_data
             return query_data_indexed
-        case "DELETE":
+    elif cmd == "DELETE":
             try:
                 del query_data_indexed[cmd_id]
             except Exception as e:
@@ -43,6 +40,6 @@ def mongodb_cmd_cases(cmd, cmd_id, new_data, session=None):
             return query_data_indexed
 
         # There is an error
-        case _:
-            raise Exception("None of the cases were matched")
+    else:
+        raise Exception("None of the cases were matched")
 
