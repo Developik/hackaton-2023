@@ -6,14 +6,14 @@ from bson import json_util
 from threading import Thread, Event
 
 import pymongo as pymongo
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response, stream_with_context
 import os
 
 from flask_pymongo import PyMongo
-
+import threading
 
 from definitions import MongoDBStaticData
-from utils.utils import mongodb_cmd_cases
+from utils.utils import mongodb_cmd_cases, execute_command
 
 app = Flask(__name__, template_folder='templates')
 
@@ -50,3 +50,18 @@ def mongodb_run():
                 'Strict-Transport-Security': "max-age=31536000; includeSubDomains;"
             }
         )
+
+@app.route('/editor/', methods=['POST'])
+def editor():
+    command = request.args.get('mongo_db_command')
+
+    # Create a new thread for the command execution
+    thread = threading.Thread(target=execute_command, args=(command,))
+    thread.start()
+
+    # Return a streaming response object
+    def generate():
+        for line in execute_command(command):
+            yield line
+    response = Response(stream_with_context(generate()), mimetype='text/plain')
+    return response
