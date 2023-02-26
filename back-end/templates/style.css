@@ -1,0 +1,72 @@
+.sidebar {
+  font-family: sans-serif;
+  border-radius: 5px;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #798688;
+  overflow-y: auto;
+
+}
+.sidebar a {
+  border-radius: 5px;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #444;
+  font-weight: bold;
+}
+.sidebar a:hover {
+  background-color: #ddd;
+}
+.active {
+  background-color: #ccc;
+}
+
+/* Styles for the main content */
+.content {
+  margin-left: 200px;
+  padding: 20px;
+}
+.content h2 {
+  font-family: system-ui;
+  font-size: 24px;
+  margin-top: 0;
+}
+.button {
+  padding: 10px;
+  background-color: #75757C;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.button:hover {
+  text-decoration-color: black;
+  background-color: #AAB7B8;
+}
+a.active{
+font-size: 15px;
+font-family: system-ui;
+color: rgb(83, 74, 61);
+}
+p{
+font-family: system-ui;
+font-size: 25px;
+transition-duration: 0.2s;
+}
+.h1class p{
+font-size: 50px;
+font-family: system-ui;
+/* left: 100px; */
+right: 500px;
+position: center;
+}
+.weel{
+font-family: system-ui;
+font-size: 15px;
+
+}

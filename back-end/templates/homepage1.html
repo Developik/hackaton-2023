@@ -3,55 +3,98 @@
   <head>
     <title>MongoDb tutorial</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-</head>
-    <style>
-      /* Styles for the left sidebar */
+
+    <title>Options and Content UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+  </head>
+
+  <style>
+
       .sidebar {
-        width: 200px;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #f1f1f1;
-        overflow-y: auto;
+          font-family: sans-serif;
+          border-radius: 5px;
+          width: 200px;
+          height: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          background-color: #798688;
+          overflow-y: auto;
+
       }
+
       .sidebar a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #444;
-        font-weight: bold;
+          border-radius: 5px;
+          display: block;
+          padding: 10px;
+          text-decoration: none;
+          color: #444;
+          font-weight: bold;
       }
+
       .sidebar a:hover {
-        background-color: #ddd;
+          background-color: #ddd;
       }
+
       .active {
-        background-color: #ccc;
+          background-color: #ccc;
       }
 
       /* Styles for the main content */
       .content {
-        margin-left: 200px;
-        padding: 20px;
+          margin-left: 200px;
+          padding: 20px;
       }
+
       .content h2 {
-        font-size: 24px;
-        margin-top: 0;
+          font-family: system-ui;
+          font-size: 24px;
+          margin-top: 0;
       }
+
       .button {
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 20px;
+          padding: 10px;
+          background-color: #75757C;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 20px;
       }
+
       .button:hover {
-        background-color: #3e8e41;
+          text-decoration-color: black;
+          background-color: #AAB7B8;
       }
-    </style>
-  </head>
+
+      a.active {
+          font-size: 15px;
+          font-family: system-ui;
+          color: rgb(83, 74, 61);
+      }
+
+      p {
+          font-family: system-ui;
+          font-size: 25px;
+          transition-duration: 0.2s;
+      }
+
+      .h1class p {
+          font-size: 50px;
+          font-family: system-ui;
+          /* left: 100px; */
+          right: 500px;
+          position: center;
+      }
+
+      .weel {
+          font-family: system-ui;
+          font-size: 15px;
+
+      }
+
+  </style>
   <body>
     <div class="sidebar">
       <a class="active" href="#option1">MongoDB Find</a>
@@ -79,12 +122,18 @@
         <h2>MongoDB Insert Content</h2>
         <p>db.listingsAndReviews.insert({id: 1232144})</p>
         <button class="button" onclick="insert_option_mongoDB()">Button for Option 4</button>
-      </div>
 
+      </div>
+      <div class="content">
+        <div id="option1">
+            <h2>Learning by Examples</h2>
+        </div>
+        <hr/>
       <div id="display_box">
 
       </div>
     </div>
+
 
     <script>
       function change1(){
@@ -197,5 +246,6 @@
       document.getElementById("option1").style.display = "block";
 
     </script>
+
   </body>
 </html>
