@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Options and Content UI</title>
+    <title>MongoDb tutorial</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
     <style>
       /* Styles for the left sidebar */
       .sidebar {
@@ -60,22 +62,22 @@
     <div class="content">
       <div id="option1">
         <h2>MongoDB Find Content</h2>
-        <p>This is the content for option 1.</p>
+        <p>db.listingsAndReviews.find()</p>
         <button class="button" onclick="find_option_mongoDB()">Button for Option 1</button>
       </div>
       <div id="option2" style="display:none">
         <h2>MongoDB Delete Content</h2>
-        <p>This is the content for option 2.</p>
+        <p>db.listingsAndReviews.delete({id: 1232144})</p>
         <button class="button" onclick="delete_option_mongoDB()">Button for Option 2</button>
       </div>
       <div id="option3" style="display:none">
         <h2>MongoDB Update Content</h2>
-        <p>This is the content for option 3.</p>
+        <p>db.listingsAndReviews.update({id: 1232144})</p>
         <button class="button" onclick="update_option_mongoDB()">Button for Option 3</button>
       </div>
       <div id="option4" style="display:none">
         <h2>MongoDB Insert Content</h2>
-        <p>This is the content for option 4.</p>
+        <p>db.listingsAndReviews.insert({id: 1232144})</p>
         <button class="button" onclick="insert_option_mongoDB()">Button for Option 4</button>
       </div>
 
@@ -117,42 +119,46 @@
         fetch('/mongodb_run?mongo_db_command=FIND', {
           method: 'POST',
         })
-                .then(response => display_results(response.json()))
-                .then(response => {display_results(response); console.log(JSON.stringify(response))})
+                .then(response => response.json())
+                .then(response => {
+                  display_results(JSON.stringify(response));
+                  console.log(JSON.stringify(response));
+                  convert_data_to_table(JSON.stringify(response));
+                })
       }
 
       function delete_option_mongoDB(){
-        fetch('/mongodb_run?mongo_db_command=DELETE?cmd_id=1241422', {
+        fetch('/mongodb_run?mongo_db_command=DELETE&cmd_id=1241422', {
           method: 'POST',
         })
                 .then(response => display_results(response.json()))
-                .then(response => console.log(JSON.stringify(response)))
+                .then(response => {display_results(JSON.stringify(response)); console.log(JSON.stringify(response))})
       }
 
       function update_option_mongoDB(){
-        fetch('/mongodb_run?mongo_db_command=UPDATE?cmd_id=1241422', {
+        fetch('/mongodb_run?mongo_db_command=UPDATE&cmd_id=1241422', {
           method: 'POST',
         })
                 .then(response => display_results(response.json()))
-                .then(response => console.log(JSON.stringify(response)))
+                .then(response => {display_results(JSON.stringify(response)); console.log(JSON.stringify(response))})
       }
 
       function insert_option_mongoDB(){
-        fetch('/mongodb_run?mongo_db_command=INSERT?cmd_id=1241421', {
+        fetch('/mongodb_run?mongo_db_command=INSERT&cmd_id=1241421', {
           method: 'POST',
         })
                 .then(response => response.json())
-                .then(response => {display_results(response); console.log(JSON.stringify(response))})
+                .then(response => {display_results(JSON.stringify(response)); console.log(JSON.stringify(response))})
       }
 
       function display_results(data){
-          var htmlString = "<div><p>" + data + "</p></div>";
+          var htmlString = "<div><p>" + beautifyJson(data) + "</p></div>";
           document.getElementById("display_box").innerHTML = htmlString;
       }
 
       var links = document.getElementsByTagName("a");
       for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener("click", function() {
+        links[i].addEventListener("click", function () {
 
           for (var j = 0; j < links.length; j++) {
             links[j].classList.remove("active");
@@ -177,8 +183,19 @@
           event.preventDefault();
         });
       }
-      // Show the initial content div
+
+      function beautifyJson(jsonData) {
+        try {
+          const parsedJson = JSON.parse(jsonData);
+          return JSON.stringify(parsedJson, null, 2);
+        } catch (error) {
+          console.error("Invalid JSON data:", error);
+          return null;
+        }
+      }
+
       document.getElementById("option1").style.display = "block";
+
     </script>
   </body>
 </html>
