@@ -1,54 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    meta
     <title>Options and Content UI</title>
-    <style>
-      /* Styles for the left sidebar */
-      .sidebar {
-        width: 200px;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #f1f1f1;
-        overflow-y: auto;
-      }
-      .sidebar a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #444;
-        font-weight: bold;
-      }
-      .sidebar a:hover {
-        background-color: #ddd;
-      }
-      .active {
-        background-color: #ccc;
-      }
-
-      /* Styles for the main content */
-      .content {
-        margin-left: 200px;
-        padding: 20px;
-      }
-      .content h2 {
-        font-size: 24px;
-        margin-top: 0;
-      }
-      .button {
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 20px;
-      }
-      .button:hover {
-        background-color: #3e8e41;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
   </head>
   <body>
     <div class="sidebar">
@@ -60,7 +17,7 @@
     <div class="content">
       <div id="option1">
         <h2>MongoDB Find Content</h2>
-        <p>This is the content for option 1.</p>
+        <p class = "weel">This is the content for option 1.</p>
         <button class="button" onclick="find_option_mongoDB()">Button for Option 1</button>
       </div>
       <div id="option2" style="display:none">
@@ -77,12 +34,18 @@
         <h2>MongoDB Insert Content</h2>
         <p>This is the content for option 4.</p>
         <button class="button" onclick="insert_option_mongoDB()">Button for Option 4</button>
-      </div>
 
+      </div>
+      <div class="content">
+        <div id="option1">
+            <h2>Learning by Examples</h2>
+        </div>
+<hr>
       <div id="display_box">
 
       </div>
     </div>
+
 
     <script>
       function change1(){
@@ -180,5 +143,15 @@
       // Show the initial content div
       document.getElementById("option1").style.display = "block";
     </script>
+    <div class="well" style = "margin-top:15px; box-shadow: 2px 3px 2px 3px gray;">
+      <h1 class ="weel"style="system-ui">MongoDB example</h1>
+      <div style="background-color: #fff; padding: 5px;">
+        &lt;db.posts.find( {category: "News"} )<br>
+
+
+      </div>
+
+    </div>
+
   </body>
 </html>
